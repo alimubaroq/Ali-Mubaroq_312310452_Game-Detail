@@ -4,7 +4,7 @@
 
 <div align="center">
   <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Android_logo_2019.png" alt="Android Logo" width="80" height="80">
-  <img src="Gambar/logo.png" alt="Game DetailLogo" width="80" height="80">
+  <img src="Gambar/logo.jpg" alt="Game DetailLogo" width="80" height="80">
 </div>
 
 ## 👤 Profil Mahasiswa

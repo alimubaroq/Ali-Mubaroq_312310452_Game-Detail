@@ -1,128 +1,28 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <!-- Konten 1: Mobile Legends -->
-    <LinearLayout
-        android:id="@+id/mobile_legends_layout"
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@drawable/card_background"
-        android:padding="16dp"
-        android:layout_marginBottom="16dp"> <!-- Perbaikan: Mengganti marginBottom dengan layout_marginBottom -->
+        android:background="#2C2C2C"
+        app:itemTextColor="#FFFFFF"
+        app:itemIconTint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation_menu" />
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/mobile_legends"
-            android:scaleType="centerCrop"
-            android:layout_marginEnd="16dp" />
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Mobile Legends"
-                android:textSize="18sp"
-                android:textColor="#FFFFFF"
-                android:fontFamily="sans-serif-medium" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Game MOBA 5v5 paling populer di Indonesia!"
-                android:textSize="14sp"
-                android:textColor="#CCCCCC"
-                android:paddingTop="4dp" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <!-- Konten 2: Wukong -->
-    <LinearLayout
-        android:id="@+id/wukong_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@drawable/card_background"
-        android:padding="16dp"
-        android:layout_marginBottom="16dp"> <!-- Perbaikan: Mengganti marginBottom dengan layout_marginBottom -->
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/wukong"
-            android:scaleType="centerCrop"
-            android:layout_marginEnd="16dp" />
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Wukong"
-                android:textSize="18sp"
-                android:textColor="#FFFFFF"
-                android:fontFamily="sans-serif-medium" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Game action seru dengan tokoh legenda Sun Wukong."
-                android:textSize="14sp"
-                android:textColor="#CCCCCC"
-                android:paddingTop="4dp" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <!-- Konten 3: Chained Together -->
-    <LinearLayout
-        android:id="@+id/chained_together_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@drawable/card_background"
-        android:padding="16dp">
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/chained_together"
-            android:scaleType="centerCrop"
-            android:layout_marginEnd="16dp" />
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Chained Together"
-                android:textSize="18sp"
-                android:textColor="#FFFFFF"
-                android:fontFamily="sans-serif-medium" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Game puzzle unik dengan tantangan menarik."
-                android:textSize="14sp"
-                android:textColor="#CCCCCC"
-                android:paddingTop="4dp" />
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

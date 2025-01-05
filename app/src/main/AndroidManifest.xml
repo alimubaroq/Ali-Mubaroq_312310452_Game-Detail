@@ -1,6 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
+
+<!-- Permissions -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GameDetall">
 
-        <!-- Deklarasi MainActivity sebagai aktivitas utama dengan android:exported -->
+        <!-- Deklarasi MainActivity sebagai aktivitas utama -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -24,16 +28,19 @@
 
         <!-- Deklarasi DetailGameActivity -->
         <activity
-            android:name=".DetailGameActivity"
+            android:name="DetailGameActivity"
             android:exported="true" />
+
+        <!-- Deklarasi SplashActivity -->
         <activity
-            android:name=".SplashActivity"
+            android:name="SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

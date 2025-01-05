@@ -1,32 +1,69 @@
-package com.example.gamedetall; // Ensure this is the correct package name
+package com.example.gamedetall;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageView;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.ImageView;
+import android.widget.ToggleButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class DetailGameActivity extends AppCompatActivity {
+    private DatabaseHelper dbHelper;
+    private boolean isFavorite = false;
+    private String gameTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_game); // Make sure this layout exists
 
-        // Find views by ID
-        ImageView gameImage = findViewById(R.id.detail_game_image);
-        TextView gameTitle = findViewById(R.id.detail_game_title);
-        TextView gameDescription = findViewById(R.id.detail_game_description);
+        // Hilangkan Action Bar/Header
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
-        // Get data passed from MainActivity
-        Intent intent = getIntent();
-        String gameName = intent.getStringExtra("gameTitle"); // Use key matching the one from MainActivity
-        String gameDesc = intent.getStringExtra("gameDescription");
-        int gameImageRes = intent.getIntExtra("gameImage", 0); // Image resource ID
+        setContentView(R.layout.activity_detail_game);
 
-        // Set the values in the views
-        gameTitle.setText(gameName);
-        gameDescription.setText(gameDesc);
-        gameImage.setImageResource(gameImageRes);
+        // Inisialisasi DatabaseHelper
+        dbHelper = new DatabaseHelper(this);
+
+        // Setup tombol back dengan style yang benar
+        ImageButton backButton = findViewById(R.id.back_button);
+        backButton.setImageResource(R.drawable.ic_back);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed(); // Atau bisa gunakan finish();
+            }
+        });
+
+        // Ambil data game dari intent
+        gameTitle = getIntent().getStringExtra("gameTitle");
+        String gameDesc = getIntent().getStringExtra("gameDescription");
+        int gameImage = getIntent().getIntExtra("gameImage", 0);
+
+        // Setup Views
+        TextView titleView = findViewById(R.id.detail_game_title);
+        TextView descView = findViewById(R.id.detail_game_description);
+        ImageView imageView = findViewById(R.id.detail_game_image);
+        ToggleButton favButton = findViewById(R.id.favorite_button);
+
+        // Set data ke dalam Views
+        titleView.setText(gameTitle);
+        descView.setText(gameDesc);
+        imageView.setImageResource(gameImage);
+
+        // Cek apakah game sudah ada di favorit
+        isFavorite = dbHelper.isFavorite(gameTitle);
+        favButton.setChecked(isFavorite);
+
+        // Atur listener untuk tombol favorite
+        favButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                dbHelper.addFavorite(gameTitle, gameDesc, gameImage);
+            } else {
+                dbHelper.removeFavorite(gameTitle);
+            }
+        });
     }
 }

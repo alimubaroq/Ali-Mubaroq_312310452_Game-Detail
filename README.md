@@ -42,6 +42,7 @@ Tujuan aplikasi Detail Game adalah memberikan informasi singkat dan padat tentan
 ![alt text](Gambar/mockup.png)
 
 ## 💻 UI/UX Preview
+![deskuiux](https://github.com/user-attachments/assets/81878369-71c1-4450-8b4c-e1180c7b4a74)
 
 
 
